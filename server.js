@@ -3,6 +3,7 @@ var cors = require('cors')
 const app = express()
 const port = 5000
 const OpenAI = require('openai');
+
 require('dotenv').config()
 
 const messages = []
@@ -24,10 +25,8 @@ async function main(input) {
   return completion.choices[0]?.message?.content 
 }
 
-
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
-
 
 app.post('/api', async function (req, res, next) {
   console.log(req.body)
@@ -38,5 +37,4 @@ app.post('/api', async function (req, res, next) {
 
 app.listen(port, () => {
   console.log("Running...")
-  // Code.....
 })
